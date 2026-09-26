@@ -1,43 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AQI Analysis</title>
+
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <nav class="navbar">
-        <h2>🌿 AQI Project</h2>
-        <div class="nav-links">
+
+    <header>
+        <h1>AQI Project</h1>
+
+        <nav>
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
             <a href="/analysis">Analysis</a>
             <a href="/about">About</a>
-        </div>
-    </nav>
-    <div class="container">
-        <h1>AQI Analysis</h1>
-        <p class="description">
+        </nav>
+    </header>
+
+    <main>
+
+        <h2>AQI Analysis</h2>
+
+        <p>
             Simple graphical analysis of Air Quality Index values.
         </p>
-        <div class="graph-card">
-            <h2>AQI Trend Graph</h2>
-            <img src="{{ url_for('static', filename='aqi_graph.png') }}"
-                 alt="AQI Graph"
-                 class="graph-image">
+
+        <div class="graph-container">
+
+            <canvas id="aqiChart"></canvas>
+
         </div>
-        <div class="card">
-            <h3>About the Graph</h3>
-            <p>
-                This graph shows AQI values from the air quality dataset.
-                Higher AQI values indicate poorer air quality.
-            </p>
-        </div>
-    </div>
-    <footer>
-        <p>Air Quality Index Project | Python & Flask</p>
-    </footer>
+
+    </main>
+
+    <script>
+
+        const dates = {{ dates | tojson }};
+        const aqiValues = {{ aqi_values | tojson }};
+
+        const ctx = document.getElementById("aqiChart");
+
+        new Chart(ctx, {
+
+            type: "line",
+
+            data: {
+
+                labels: dates,
+
+                datasets: [{
+                    label: "AQI",
+                    data: aqiValues,
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false,
+                    pointRadius: 4
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    title: {
+                        display: true,
+                        text: "AQI Trend Graph"
+                    },
+
+                    legend: {
+                        display: true
+                    }
+
+                },
+
+                scales: {
+
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Date"
+                        }
+                    },
+
+                    y: {
+                        title: {
+                            display: true,
+                            text: "AQI"
+                        },
+
+                        beginAtZero: true
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>
