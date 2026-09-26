@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>🌿 AQI Project</h2>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/analysis">Analysis</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>AQI Dashboard</h1>
+        <p class="description">
+            Recent air quality information from the dataset.
+        </p>
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Air Quality</h3>
+                <p>Monitor recent AQI values</p>
+            </div>
+            <div class="card">
+                <h3>Pollutants</h3>
+                <p>PM2.5, PM10, CO, NO₂, SO₂ and O₃</p>
+            </div>
+
+            <div class="card">
+                <h3>Data Source</h3>
+                <p>Air Quality Dataset</p>
+            </div>
+        </div>
+        <div class="table-card">
+            <h2>Recent AQI Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>City</th>
+                        <th>PM2.5</th>
+                        <th>PM10</th>
+                        <th>AQI</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                    <tr>
+                        <td>{{ row["Date"] }}</td>
+                        <td>{{ row["City"] }}</td>
+                        <td>{{ row["PM2.5"] }}</td>
+                        <td>{{ row["PM10"] }}</td>
+                        <td>{{ row["AQI"] }}</td>
+                        <td>{{ row["AQI_Bucket"] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <p>Air Quality Index Project | Python & Flask</p>
+    </footer>
+</body>
+</html>

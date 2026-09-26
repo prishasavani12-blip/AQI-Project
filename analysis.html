@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Analysis</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>🌿 AQI Project</h2>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/analysis">Analysis</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>AQI Analysis</h1>
+        <p class="description">
+            Simple graphical analysis of Air Quality Index values.
+        </p>
+        <div class="graph-card">
+            <h2>AQI Trend Graph</h2>
+            <img src="{{ url_for('static', filename='aqi_graph.png') }}"
+                 alt="AQI Graph"
+                 class="graph-image">
+        </div>
+        <div class="card">
+            <h3>About the Graph</h3>
+            <p>
+                This graph shows AQI values from the air quality dataset.
+                Higher AQI values indicate poorer air quality.
+            </p>
+        </div>
+    </div>
+    <footer>
+        <p>Air Quality Index Project | Python & Flask</p>
+    </footer>
+</body>
+</html>
