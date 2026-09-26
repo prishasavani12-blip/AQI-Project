@@ -1,1 +1,61 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About AQI Project</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>🌿 AQI Project</h2>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/analysis">Analysis</a>
+            <a href="/about">About</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>About the Project</h1>
+        <div class="about-card">
+            <h2>Air Quality Index</h2>
+            <p>
+                The Air Quality Index (AQI) project is a simple Python-based
+                web application that helps users understand the quality of air.
+            </p>
+            <p>
+                Users can enter pollutant values such as PM2.5, PM10, CO,
+                NO₂, SO₂ and O₃ to calculate an AQI value.
+            </p>
+            <h3>Project Features</h3>
+            <ul>
+                <li>AQI Calculator</li>
+                <li>AQI Category</li>
+                <li>Health Advice</li>
+                <li>Recent AQI Data</li>
+                <li>AQI Graph</li>
+            </ul>
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>Python</li>
+                <li>Flask</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Pandas</li>
+                <li>Matplotlib</li>
+            </ul>
+            <h3>Objective</h3>
+            <p>
+                The main objective of this project is to provide a simple
+                and easy-to-understand way to view and analyze air quality
+                information.
+            </p>
+        </div>
+    </div>
+    <footer>
+        <p>Air Quality Index Project | Python & Flask</p>
+    </footer>
+</body>
+</html>
